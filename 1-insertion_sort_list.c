@@ -1,35 +1,35 @@
 #include "sort.h"
 /**
- * _cambio - cambiar nodos
+ * change - cambiar nodos
  * @aux: Something
- * @previo: Something
+ * @previous: Something
  * @h: Something
- * Return: list
+ * Return: 0
  */
-void *_cambio(listint_t **h, listint_t *aux, listint_t *previo)
+void *change(listint_t **h, listint_t *aux, listint_t *previous)
 {
-	listint_t *anterior = NULL, *siguiente = NULL;
+	listint_t *lastone = NULL, *nxt = NULL;
 
-	if (previo->prev)
-		anterior = previo->prev;
+	if (previous->prev)
+		lastone = previous->prev;
 
 	if (aux->next)
-		siguiente = aux->next;
+		nxt = aux->next;
 
-	if (anterior)
-		anterior->next = aux;
+	if (lastone)
+		lastone->next = aux;
 
-	if (siguiente)
-		siguiente->prev = previo;
+	if (nxt)
+		nxt->prev = previous;
 
-	aux->next = previo;
-	aux->prev = anterior;
+	aux->next = previous;
+	aux->prev = lastone;
 
-	if (anterior == NULL)
+	if (lastone == NULL)
 		*h = aux;
 
-	previo->next = siguiente;
-	previo->prev = aux;
+	previous->next = nxt;
+	previous->prev = aux;
 
 	print_list(*h);
 
