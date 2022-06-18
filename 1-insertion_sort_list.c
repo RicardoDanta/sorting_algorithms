@@ -1,6 +1,6 @@
 #include "sort.h"
 /**
- * change - cambiar nodos
+ * change - a function that changes nodes
  * @aux: Something
  * @previous: Something
  * @h: Something
@@ -37,8 +37,9 @@ void *change(listint_t **h, listint_t *aux, listint_t *previous)
 }
 
 /**
- * insertion_sort_list - ordenar una doubly linkedlist
- * @list: doubly linkedlist
+ * insertion_sort_list - a function that order a doubly linkedlist
+ * @list: Something
+ * Return: 0
  */
 void insertion_sort_list(listint_t **list)
 {
