@@ -42,31 +42,31 @@ void *change(listint_t **h, listint_t *aux, listint_t *previous)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *anterior;
+	listint_t *lastone;
 	listint_t *aux;
 
 	if (!list || !((*list)->next))
 		return;
 
 	aux = (*list)->next;
-	anterior = *list;
+	lastone = *list;
 	for (; aux ;)
 	{
-		if (anterior->n > aux->n)
+		if (lastone->n > aux->n)
 		{
-			aux = _cambio(list, aux, anterior);
-			anterior = aux->prev;
-			while (anterior != NULL)
+			aux = change(list, aux, lastone);
+			lastone = aux->prev;
+			while (lastone != NULL)
 			{
-				if (anterior->n > aux->n)
+				if (lastone->n > aux->n)
 				{
-					aux = _cambio(list, aux, anterior);
-					anterior = aux;
+					aux = change(list, aux, lastone);
+					lastone = aux;
 				}
-				anterior = anterior->prev;
+				lastone = lastone->prev;
 			}
 		}
-		anterior = aux;
+		lastone = aux;
 		aux = aux->next;
 	}
 }
